@@ -16,10 +16,11 @@ namespace Geo.DataClasses
 		private string regionCode;
 		private string regionName;
 		private string postalCode;
-		private double latitude;
-		private double longitude;
+		private decimal latitude;
+		private decimal longitude;
 
-		public GeoData(int tLicenseId, string tDnsName, string tIp, string tCity, string tCountry, string tCountryCode, string tRegionCode, string tRegionName, string tPostalCode,double tLatitude, double tLongitude)
+		public GeoData(int tLicenseId, string tDnsName, string tIp, string tCity, string tCountry, string tCountryCode,
+		               string tRegionCode, string tRegionName, string tPostalCode, decimal tLatitude, decimal tLongitude)
 		{
 			licenseId = tLicenseId;
 			dnsName = tDnsName;
@@ -81,7 +82,12 @@ namespace Geo.DataClasses
 
 		public string Location
 		{
-			get { return string.Format("({0},{1})", latitude, longitude); }
+			get { return string.Format("{0}:{1}", latitude, longitude); }
+		}
+
+		public string JSPresentation()
+		{
+			return string.Format("{0};",Location);
 		}
 	}
 }

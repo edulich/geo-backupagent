@@ -28,7 +28,7 @@ function setMarkerByAdres(address) {
 	geocoder.geocode({ 'address': address }, function (results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			var icon = new google.maps.MarkerImage("../Images/logo.png");
-			map.setCenter(results[0].geometry.location);
+		//	map.setCenter(results[0].geometry.location);
 			var marker = new google.maps.Marker({
 				map: map,
 				icon:icon,
@@ -39,6 +39,35 @@ function setMarkerByAdres(address) {
 		}
 	});
 }
+function setMarkerByLocation(latlng) 
+{
+	var icon = new google.maps.MarkerImage("../Images/logo.png");
+	var marker = new google.maps.Marker({
+		map: map,
+		icon: icon,
+		position: latlng
+	});
+}
+
+function SetServersMarkers() 
+{
+	showLoader();
+	alert("This can take several minutes");
+	var ekem = document.getElementById("MainContent_serverLoc");
+	var fullAdressValue = ekem.innerText; ;
+	var pointList = fullAdressValue.split(';');
+	for (var i = 0; i < pointList.length; i++) {
+		var LatLng = pointList[i].toString().split(':');
+		if (LatLng.length == 2) 
+		{
+			var location = new google.maps.LatLng(LatLng[0].toString().replace(',','.'), LatLng[1].toString().replace(',','.'));
+			setMarkerByLocation(location);
+		}
+		sleep(100);
+	}
+	hideLoader(); 
+}
+
 function multiCodeAddress() 
 {
 	showLoader();

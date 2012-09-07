@@ -38,5 +38,7 @@
 
 	<input id="adressesValue" type="textbox" visibility="hidden" value="Kyiv,Delft,Dnipropetrovsk,Toronto,Abuja,Accra,Adamstown,Algiers,Alofi,Amman,Amsterdam,Ankara,Antananarivo,Apia,Ashgabat,Asmara,Astana,Asunción,Athens,Baghdad,Baku,Bamako,Bangkok,Bangui,Banjul,Basseterre,Beijing,Beirut,Belgrade,Belmopan">
 	<input type="button" value="Encode several" onclick="multiCodeAddress()">
-
+	
+	<asp:Label ID="serverLoc"  runat="server" Text=""></asp:Label>
+	<input type="button" value="ShowRealServer" onclick="SetServersMarkers()">
 </asp:Content>
