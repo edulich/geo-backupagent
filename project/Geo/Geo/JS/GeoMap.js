@@ -27,9 +27,11 @@ function codeAddress()
 function setMarkerByAdres(address) {
 	geocoder.geocode({ 'address': address }, function (results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
+			var icon = new google.maps.MarkerImage("../Images/logo.png");
 			map.setCenter(results[0].geometry.location);
 			var marker = new google.maps.Marker({
 				map: map,
+				icon:icon,
 				position: results[0].geometry.location
 			});
 		} else {
